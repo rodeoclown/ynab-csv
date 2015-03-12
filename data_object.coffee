@@ -1,5 +1,5 @@
 # These are the columns that YNAB expects
-ynab_cols = ['Date','Payee','Category','Memo','Outflow','Inflow']
+ynab_cols = ['Date','Payee','Category','Memo','Outflow','Inflow','Amount']
 
 # Converts a string value into a number.
 # Filters out all special characters like $ or ,
@@ -58,6 +58,7 @@ class window.DataObject
             #   the rest are just returned as they are.
             switch col
               when 'Date' then tmp_row[col] = parseDate(cell)
+              when 'Amount' then tmp_row[col] = numberfy(cell)
               when 'Outflow'
                 number = numberfy(cell)
                 if lookup['Outflow'] == lookup['Inflow']
